@@ -1,0 +1,25 @@
+# Mac OS X files
+.DS_Store
+*.swp
+*~
+
+# Xcode build files
+build/*
+build
+*/build
+*.dSYM
+*.pbxuser
+
+# Xcode project files
+*.mode1 
+*.mode2
+*.mode1v3
+
+# Interface Builder backups
+*~.nib
+
+# hg (Mercurial) files
+.hg/
+.hgignore
+*.orig
+*.rej
