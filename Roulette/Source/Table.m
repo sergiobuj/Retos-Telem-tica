@@ -26,7 +26,7 @@
 #pragma mark GamePlay methods
 
 // A new bet was placed on the table
-- (void) placeBet:(Bet *)newBet{
+- (void) receiveBet:(Bet *)newBet{
 	[bets addObject:newBet];
 }
 

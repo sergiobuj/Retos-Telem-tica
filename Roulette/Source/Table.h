@@ -22,7 +22,7 @@
 @property (nonatomic, assign) NSNumber *tableID;
 
 - (id) initWithID:(NSNumber *)idTable;
-- (void) placeBet:(Bet *)newBet;
+- (void) receiveBet:(Bet *)newBet;
 - (void) removeBets;
 - (void) payBetsToResult:(int)result;
 - (void) spinTheWheel;

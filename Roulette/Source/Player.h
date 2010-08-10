@@ -19,9 +19,10 @@
 @property (nonatomic, assign) NSNumber *money;
 @property (nonatomic, copy) NSString *name;
 @property (nonatomic, assign) NSNumber *gamblerID;
-@property (nonatomic, retain) Table *currentTable;
+@property (nonatomic, assign) Table *currentTable;
 
 - (id) initWithID:(int)idnumber Name:(NSString *)givenName money:(double)initialMoney;
 - (void) placeBetOfValue:(double)value forOption:(int)option;
 - (void) receiveEarnings:(double) earnings;
+- (NSString *)spinResult;
 @end

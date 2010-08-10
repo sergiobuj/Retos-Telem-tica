@@ -27,7 +27,7 @@
 // Place a bet on the current table
 - (void) placeBetOfValue:(double)value forOption:(int)option{
 	Bet * newBet = [[Bet alloc] initByGambler:self withValue:[NSNumber numberWithDouble:value] forOption:option];
-	[self.currentTable placeBet:newBet];
+	[self.currentTable receiveBet:newBet];
 	
 	double newMoney = [self.money doubleValue] - value;
 	self.money = [NSNumber numberWithDouble:newMoney];
@@ -52,9 +52,11 @@
 	}	
 }
 
-
+- (NSString *)spinResult{
+	return [NSString stringWithFormat:@"%@ tiene $%@",self.name, self.money];
+}
 - (NSString *)description{
-	return [NSString stringWithFormat:@"%@ has $%@, table assign:%@",self.name, self.money, (self.currentTable != nil)? @"YES": @"NO"];
+	return [NSString stringWithFormat:@"%d %@ tiene $%f, tiene mesa:%@",[gamblerID intValue], self.name, [self.money doubleValue], (self.currentTable != nil)? @"YES": @"NO"];
 }
 
 //
