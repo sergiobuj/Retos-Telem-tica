@@ -12,9 +12,9 @@
 @interface Bet : NSObject {
 	NSNumber *gamblerID;
 	NSNumber *valueOfBet;
-	int option;
-	
+	int option;	
 }
+
 @property (nonatomic, assign) NSNumber *gamblerID;
 @property (nonatomic, assign) NSNumber *valueOfBet;
 @property (nonatomic) int option;

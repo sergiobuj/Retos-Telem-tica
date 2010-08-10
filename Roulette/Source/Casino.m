@@ -10,10 +10,10 @@
 #import "Table.h"
 
 @implementation Casino
-
+// Say hello to github
 + (void) onBusiness{
 	int numTables = 0;
-//	int numGamblers = 0;
+
 	Table *firstTable = [[Table alloc] initWithID:[NSNumber numberWithInt:numTables]];
 	[firstTable payBetsToResult:0];
 }

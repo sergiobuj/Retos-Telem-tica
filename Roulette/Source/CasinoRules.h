@@ -7,7 +7,7 @@
 //
 
 #import <Cocoa/Cocoa.h>
-
+/*
 enum betOptions {
 	kBet0 = 0,
 	kBet1, kBet2, kBet3, kBet4,	kBet5,	kBet6,	kBet7,	kBet8,	kBet9,	kBet10,	kBet11,
@@ -19,7 +19,11 @@ enum betOptions {
 enum kColor {
 	kRedColor = 0,
 	kBlackColor
-};
+};*/
+
+#define kRedColor [NSNumber numberWithInt:0]
+#define kBlackColor [NSNumber numberWithInt:1]
+
 
 @interface CasinoRules : NSObject {
 }
