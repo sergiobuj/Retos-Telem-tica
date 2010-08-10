@@ -8,14 +8,15 @@
 
 #import "Table.h"
 #import <ScreenSaver/ScreenSaver.h>
+#import "Bet.h"
 #import "CasinoRules.h"
+#import "Player.h"
 
 @implementation Table
-@synthesize gamblers, bets, tableName, tableID, colors;
+@synthesize gamblers, bets, tableName, tableID ;
 
 - (id) initWithID:(NSNumber *)idTable{
 	if (self = [super init]) {
-		self.colors = [CasinoRules arrayOfColors];
 		self.tableID = idTable;
 	}
 	return self;
@@ -36,9 +37,50 @@
 
 // pay bets on table
 - (void) payBetsToResult:(int)result{
-	for(int i = 0; i < [colors count]; i++ )
-		NSLog(@"%@", [colors objectAtIndex:i]);
 
+	for( Bet * currentBet in bets){
+		int currentOption = [currentBet option];
+		int payout = 0;
+		switch (currentOption) {
+
+			case kRedOption:
+				if (kRedColor == [CasinoRules getColorForNumber:result]){
+					payout = ( [[currentBet valueOfBet] intValue] / 18.0 ) * 36.0;
+				}
+				break;
+
+			
+			case kBlackOption:
+				if (kBlackColor == [CasinoRules getColorForNumber:result]){
+					payout = ( [[currentBet valueOfBet] intValue] / 18.0 ) * 36.0;
+				}
+				break;
+				
+				
+			case kEvenOption:
+				if ( result % 2 == 0 ){
+					payout = ( [[currentBet valueOfBet] intValue] / 18.0 ) * 36.0;
+				}
+				break;
+				
+				
+			case kOddOption:
+				if ( result % 2 != 0 ){
+					payout = ( [[currentBet valueOfBet] intValue] / 18.0 ) * 36.0;
+				}
+				break;
+		
+				
+			default:
+				if( currentOption <= 37 && currentOption >=0 && currentOption == result){
+					payout = [[currentBet valueOfBet] intValue] * 36.0;
+					
+				}// else, invalid number!
+				break;
+		}
+		
+		[currentBet.gamblerID receiveEarnings:payout];
+	}
 }
 
 // start a new game

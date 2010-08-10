@@ -14,13 +14,12 @@
 	NSMutableArray *bets;     // List of bets placed on the table for the next game
 	NSString *tableName;      // Name of the table
 	NSNumber *tableID;        // Unique number for the table
-	NSArray *colors;
+
 }
 @property (nonatomic, retain) NSString *tableName;
 @property (nonatomic, copy) NSMutableArray *gamblers;
 @property (nonatomic, copy) NSMutableArray *bets;
 @property (nonatomic, assign) NSNumber *tableID;
-@property (nonatomic, retain) NSArray *colors;
 
 - (id) initWithID:(NSNumber *)idTable;
 - (void) placeBet:(Bet *)newBet;

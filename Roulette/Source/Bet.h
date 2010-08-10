@@ -7,18 +7,22 @@
 //
 
 #import <Cocoa/Cocoa.h>
-
+@class Player;
+#define kRedOption 38
+#define kBlackOption 39
+#define kOddOption 40
+#define kEvenOption 41
 
 @interface Bet : NSObject {
-	NSNumber *gamblerID;
+	Player *gamblerID;
 	NSNumber *valueOfBet;
 	int option;	
 }
 
-@property (nonatomic, assign) NSNumber *gamblerID;
+@property (nonatomic, assign) Player *gamblerID;
 @property (nonatomic, assign) NSNumber *valueOfBet;
 @property (nonatomic) int option;
 
-- (id) initByGambler:(NSNumber *)gambler withValue:(NSNumber *)value forOption:(int) betOption;
+- (id) initByGambler:(Player *)gambler withValue:(NSNumber *)value forOption:(int) betOption;
 
 @end

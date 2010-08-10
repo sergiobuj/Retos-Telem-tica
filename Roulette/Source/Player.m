@@ -24,9 +24,12 @@
 
 - (int) placeBetOfValue:(int)value forOption:(int)option{
 	int success = 0;
-	Bet * newBet = [[Bet alloc] initByGambler:self.gamblerID withValue:[NSNumber numberWithInt:value] forOption:option];
-	// Set bet on table
+	Bet * newBet = [[Bet alloc] initByGambler:self withValue:[NSNumber numberWithInt:value] forOption:option];
 	[self.currentTable placeBet:newBet];
+	
+	int newMoney = [self.money intValue] - value;
+	self.money = [NSNumber numberWithInt:newMoney];
+	
 	[newBet release];
 	return success;
 }
@@ -47,7 +50,6 @@
 
 
 - (NSString *)description{
-	
 	return [NSString stringWithFormat:@"%@ has $%@, table assign:%@",self.name, self.money, (self.currentTable != nil)? @"YES": @"NO"];
 }
 

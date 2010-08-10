@@ -11,49 +11,18 @@
 
 @implementation CasinoRules
 
-+ (NSArray *) arrayOfColors{
-		NSArray *colorOfNumber = [[NSArray alloc] initWithObjects:
-						 kRedColor, //1
-						 kBlackColor,
-						 kRedColor,
-						 kBlackColor,
-						 kRedColor,
-						 kBlackColor,
-						 kRedColor,
-						 kBlackColor,
-						 kRedColor,
-						 kBlackColor, //10
-						 
-						 kBlackColor, //11
-						 kRedColor,
-						 kBlackColor,
-						 kRedColor,
-						 kBlackColor,
-						 kRedColor,
-						 kBlackColor,
-						 kRedColor, //18
-						 
-						 kRedColor, //19
-						 kBlackColor,
-						 kRedColor,
-						 kBlackColor,
-						 kRedColor,
-						 kBlackColor,
-						 kRedColor,
-						 kBlackColor,
-						 kRedColor,
-						 kBlackColor, //28
-						 
-						 kBlackColor, //29
-						 kRedColor,
-						 kBlackColor,
-						 kRedColor,
-						 kBlackColor,
-						 kRedColor,
-						 kBlackColor,
-						 kRedColor, //36
-						 nil ];
-	return [colorOfNumber autorelease];
++ (int) getColorForNumber:(int)number{
+	int color = kNoColor;
+	
+	if( (number >= 29 && number < 37) || (number >= 11 && number < 19) ){
+		color = (number % 2 == 0)? kRedColor : kBlackColor;
+	
+	}else if (number >= 19 && number < 29 || (number >= 1 && number < 11) ) {
+		color = (number % 2 == 0)? kBlackColor : kRedColor;
+	
+	}
+	
+	return color;
 }
 
 @end
