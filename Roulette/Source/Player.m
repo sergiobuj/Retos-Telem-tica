@@ -23,6 +23,7 @@
 	return self;
 }
 
+
 // Place a bet on the current table
 - (void) placeBetOfValue:(double)value forOption:(int)option{
 	Bet * newBet = [[Bet alloc] initByGambler:self withValue:[NSNumber numberWithDouble:value] forOption:option];

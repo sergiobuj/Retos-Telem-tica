@@ -96,6 +96,10 @@
 	}
 }
 
+- (NSString *)description{
+	return [NSString stringWithFormat:@"Mesa:%@ con:%d jugador(es)",tableID ,[gamblers count]];
+}
+
 -(void) dealloc{
 	[gamblers release];
 	[bets release];

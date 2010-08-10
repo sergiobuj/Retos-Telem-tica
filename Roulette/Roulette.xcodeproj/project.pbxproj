@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A091508212112AF2008200B3 /* libc.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = A091508112112AF2008200B3 /* libc.dylib */; };
 		A0D1A27812107E8200E99365 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A0D1A27712107E8200E99365 /* Foundation.framework */; };
 		A0D1A27A12107E8200E99365 /* Roulette.1 in CopyFiles */ = {isa = PBXBuildFile; fileRef = A0D1A27912107E8200E99365 /* Roulette.1 */; };
 		A0D1A29112107E9E00E99365 /* Bet.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = A0D1A28412107E9E00E99365 /* Bet.h */; };
@@ -43,6 +44,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		A091508112112AF2008200B3 /* libc.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libc.dylib; path = usr/lib/libc.dylib; sourceTree = SDKROOT; };
 		A0D1A27312107E8200E99365 /* Roulette */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = Roulette; sourceTree = BUILT_PRODUCTS_DIR; };
 		A0D1A27712107E8200E99365 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		A0D1A27912107E8200E99365 /* Roulette.1 */ = {isa = PBXFileReference; lastKnownFileType = text.man; path = Roulette.1; sourceTree = "<group>"; };
@@ -67,6 +69,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A0D1A27812107E8200E99365 /* Foundation.framework in Frameworks */,
+				A091508212112AF2008200B3 /* libc.dylib in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -123,6 +126,7 @@
 			isa = PBXGroup;
 			children = (
 				A0D1A27712107E8200E99365 /* Foundation.framework */,
+				A091508112112AF2008200B3 /* libc.dylib */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
