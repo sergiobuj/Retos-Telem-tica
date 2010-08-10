@@ -13,38 +13,41 @@
 @implementation Player
 @synthesize money, name, gamblerID, currentTable;
 
-- (id) initWithID:(int)idnumber Name:(NSString *)givenName money:(int)initialMoney{
+// A player decides to go to a Casino...
+- (id) initWithID:(int)idnumber Name:(NSString *)givenName money:(double)initialMoney{
 	if( self = [super init]){
 		self.name = givenName;
-		self.money = [NSNumber numberWithInt:initialMoney];
+		self.money = [NSNumber numberWithDouble:initialMoney];
 		self.gamblerID = [NSNumber numberWithInt:idnumber];
 	}
 	return self;
 }
 
-- (int) placeBetOfValue:(int)value forOption:(int)option{
-	int success = 0;
-	Bet * newBet = [[Bet alloc] initByGambler:self withValue:[NSNumber numberWithInt:value] forOption:option];
+// Place a bet on the current table
+- (void) placeBetOfValue:(double)value forOption:(int)option{
+	Bet * newBet = [[Bet alloc] initByGambler:self withValue:[NSNumber numberWithDouble:value] forOption:option];
 	[self.currentTable placeBet:newBet];
 	
-	int newMoney = [self.money intValue] - value;
-	self.money = [NSNumber numberWithInt:newMoney];
+	double newMoney = [self.money doubleValue] - value;
+	self.money = [NSNumber numberWithDouble:newMoney];
 	
 	[newBet release];
-	return success;
+
 }
 
+// Change table
 - (void)setCurrentTable:(Table *)newTable{
 	if (self.currentTable == nil) {
 		self.currentTable = newTable;
 	}
 }
 
-- (void) receiveEarnings:(int)earnings {
+// Receive earnings of bet, if any ;)
+- (void) receiveEarnings:(double)earnings {
 	if (earnings > 0) {
-		earnings += [self.money intValue];
+		earnings += [self.money doubleValue];
 		self.money = nil;
-		self.money = [NSNumber numberWithInt:earnings];
+		self.money = [NSNumber numberWithDouble:earnings];
 	}	
 }
 
@@ -53,7 +56,7 @@
 	return [NSString stringWithFormat:@"%@ has $%@, table assign:%@",self.name, self.money, (self.currentTable != nil)? @"YES": @"NO"];
 }
 
-
+//
 - (void) dealloc{
 	[name release];
 	[gamblerID release];

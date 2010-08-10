@@ -12,6 +12,8 @@
 @implementation Bet
 @synthesize gamblerID, valueOfBet, option;
 
+
+// Create a bet!
 - (id) initByGambler:(Player *)gambler withValue:(NSNumber *)value forOption:(int) betOption{
 	if (self = [super init]) {
 		self.gamblerID = gambler;

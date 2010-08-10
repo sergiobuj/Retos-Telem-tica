@@ -21,7 +21,7 @@
 @property (nonatomic, assign) NSNumber *gamblerID;
 @property (nonatomic, retain) Table *currentTable;
 
-- (id) initWithID:(int)idnumber Name:(NSString *)givenName money:(int)initialMoney;
-- (int) placeBetOfValue:(int)value forOption:(int)option;
-- (void) receiveEarnings:(int) earnings;
+- (id) initWithID:(int)idnumber Name:(NSString *)givenName money:(double)initialMoney;
+- (void) placeBetOfValue:(double)value forOption:(int)option;
+- (void) receiveEarnings:(double) earnings;
 @end

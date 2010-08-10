@@ -10,12 +10,43 @@
 #import "Table.h"
 
 @implementation Casino
-// Say hello to github
-+ (void) onBusiness{
-	int numTables = 0;
 
-	Table *firstTable = [[Table alloc] initWithID:[NSNumber numberWithInt:numTables]];
-	[firstTable payBetsToResult:0];
+// The Casino opens for some Roulette...
++ (void) onBusiness{
+	
+	/* WORK IN PROGRESS
+	BOOL closeCasino = FALSE;
+	NSMutableArray *tables = [[NSMutableArray alloc] init];
+	NSMutableArray *players = [[NSMutableArray alloc] init];
+	
+	NSAutoreleasePool * newPool;	
+	while ( !closeCasino ) {
+		newPool = [[NSAutoreleasePool alloc] init];
+		char * inputString;
+		scanf("%s", inputString);
+		NSString *inputStringNS = [[NSString alloc] initWithCString:inputString];
+		NSScanner *scanner = [NSScanner scannerWithString:inputStringNS];
+		NSString * currentWord;
+		while ([scanner isAtEnd] == NO) {
+		
+		
+		
+			if([scanner scanUpToString:@" " intoString:&webpage] &&
+			   [webpage hasPrefix:@"http://"] &&
+			   ![tinyPrefixes containsObject:[[NSURL URLWithString:webpage] host]] ){
+				[longWebpages addObject: webpage];
+				[pagesLocation addObject:[NSNumber numberWithUnsignedInteger:[scanner scanLocation] - [webpage length] ]];
+			}
+	 
+
+		
+		
+		}
+
+		[newPool drain];
+	}
+	
+*/
 }
 
 @end

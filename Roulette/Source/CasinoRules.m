@@ -11,6 +11,7 @@
 
 @implementation CasinoRules
 
+// Get the color of a certain number
 + (int) getColorForNumber:(int)number{
 	int color = kNoColor;
 	

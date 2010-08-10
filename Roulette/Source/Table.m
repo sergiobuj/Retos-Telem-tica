@@ -15,6 +15,7 @@
 @implementation Table
 @synthesize gamblers, bets, tableName, tableID ;
 
+// Buy a Roulette
 - (id) initWithID:(NSNumber *)idTable{
 	if (self = [super init]) {
 		self.tableID = idTable;
@@ -24,7 +25,7 @@
 
 #pragma mark GamePlay methods
 
-// places a new bet on the table
+// A new bet was placed on the table
 - (void) placeBet:(Bet *)newBet{
 	[bets addObject:newBet];
 }
@@ -40,50 +41,53 @@
 
 	for( Bet * currentBet in bets){
 		int currentOption = [currentBet option];
-		int payout = 0;
+		double payout = 0;
 		switch (currentOption) {
 
 			case kRedOption:
 				if (kRedColor == [CasinoRules getColorForNumber:result]){
-					payout = ( [[currentBet valueOfBet] intValue] / 18.0 ) * 36.0;
+					payout = ( [[currentBet valueOfBet] doubleValue] / 18.0 ) * 36.0;
 				}
 				break;
 
 			
 			case kBlackOption:
 				if (kBlackColor == [CasinoRules getColorForNumber:result]){
-					payout = ( [[currentBet valueOfBet] intValue] / 18.0 ) * 36.0;
+					payout = ( [[currentBet valueOfBet] doubleValue] / 18.0 ) * 36.0;
 				}
 				break;
 				
 				
 			case kEvenOption:
 				if ( result % 2 == 0 ){
-					payout = ( [[currentBet valueOfBet] intValue] / 18.0 ) * 36.0;
+					payout = ( [[currentBet valueOfBet] doubleValue] / 18.0 ) * 36.0;
 				}
 				break;
 				
 				
 			case kOddOption:
 				if ( result % 2 != 0 ){
-					payout = ( [[currentBet valueOfBet] intValue] / 18.0 ) * 36.0;
+					payout = ( [[currentBet valueOfBet] doubleValue] / 18.0 ) * 36.0;
 				}
 				break;
 		
 				
 			default:
 				if( currentOption <= 37 && currentOption >=0 && currentOption == result){
-					payout = [[currentBet valueOfBet] intValue] * 36.0;
+					payout = [[currentBet valueOfBet] doubleValue] * 36.0;
 					
 				}// else, invalid number!
 				break;
 		}
 		
-		[currentBet.gamblerID receiveEarnings:payout];
+		if (payout > 0) {
+			[currentBet.gamblerID receiveEarnings:payout];
+		}
+
 	}
 }
 
-// start a new game
+// Spin It!!!!
 - (void) spinTheWheel{
 	if ([bets count] != 0) {
 		int result = SSRandomIntBetween(0, 37);
