@@ -116,10 +116,11 @@
 					if ( currentWord != nil ) {
 						
 						if ( [[players objectAtIndex:currentPlayer -1] currentTable] != nil ) {
-							
+							printf("válido mesa");
 							if (betOption >=0 && betOption <= 41) {
 								if (betValue <= [[[players objectAtIndex:currentPlayer -1] money] doubleValue]) {
 									[[players objectAtIndex:currentPlayer -1] placeBetOfValue:betValue forOption:betOption];
+									printf("válido bet");
 								}
 							}
 							
@@ -157,7 +158,7 @@
 								break;
 							}
 					}
-					printf("El jugador salio del casino\n");
+					printf("El jugador salió del casino\n");
 					
 					
 					
@@ -174,6 +175,7 @@
 					[scanner scanUpToString:@" " intoString:&currentWord];
 					if ( [currentWord compare:@"mesa"] != 0 && tableCount > 0) {
 						[[players objectAtIndex:currentPlayer-1] setCurrentTable:[tables objectAtIndex:[currentWord intValue]-1 ]];
+						[[[tables objectAtIndex:[currentWord intValue]-1 ] gamblers] addObject:[players objectAtIndex:currentPlayer-1]];
 					}else {
 						printf("Se necesita el número de mesa válido\n");
 					}

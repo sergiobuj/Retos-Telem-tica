@@ -7,23 +7,22 @@
 //
 
 #import <Cocoa/Cocoa.h>
-@class Table;
 
 @interface Player : NSObject {
-	NSNumber *money;
+
 	NSString *name;
-	NSNumber *gamblerID;
-	Table *currentTable;
+	double money;
+	int gamblerID;
+	int tableID;
 }
  
-@property (nonatomic, assign) NSNumber *money;
+@property (nonatomic) double money;
+@property (nonatomic) int gamblerID;
+@property (nonatomic) int tableID;
 @property (nonatomic, copy) NSString *name;
-@property (nonatomic, assign) NSNumber *gamblerID;
-@property (nonatomic, assign) Table *currentTable;
 
 - (id) initWithID:(int)idnumber Name:(NSString *)givenName money:(double)initialMoney;
-- (void) placeBetOfValue:(double)value forOption:(int)option;
-- (void) receiveEarnings:(double) earnings;
+- (void) collect:(double) income;
 - (NSString *)spinResult;
 
 @end
