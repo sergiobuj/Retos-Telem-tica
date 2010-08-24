@@ -17,6 +17,7 @@
 
 // The Casino opens for some Roulette...
 + (void) onBusiness{
+	srandom(time(NULL));
 	
 	
 	BOOL closeCasino = FALSE;
@@ -84,18 +85,24 @@
 					[players setObject:newP forKey:[NSString stringWithFormat:@"%d",playerIndex]];
 					[newP release];
 				}else if ( [currentWord compare:@"apuesta"] == 0 ) {
-					NSLog(@"jugador %d quiere apostar", currentPlayer);
+//					NSLog(@"jugador %d quiere apostar", currentPlayer);
 					getNextCurrentWord;
 					double value = [currentWord doubleValue];
-					NSLog(@"value %d",value);
+//					NSLog(@"value %d",value);
 					if(value <= [[players objectForKey:[NSString stringWithFormat:@"%d",currentPlayer]] money]){
 						[[players objectForKey:[NSString stringWithFormat:@"%d",currentPlayer]] collect:-value];
 						getNextCurrentWord;
 						int option = [currentWord intValue];
-						NSLog(@"option %d", option);
-						int playerTable = [[players objectForKey:[NSString stringWithFormat:@"%d",currentPlayer]] tableID];
-						
-						[[tables objectForKey:[NSString stringWithFormat:@"%d",playerTable]] receiveBetFromGambler:currentPlayer forValue:value toOption:option];
+//						NSLog(@"option %d", option);
+						if (option >= 0 && option <= 41) {
+							int playerTable = [[players objectForKey:[NSString stringWithFormat:@"%d",currentPlayer]] tableID];
+							
+							[[tables objectForKey:[NSString stringWithFormat:@"%d",playerTable]] receiveBetFromGambler:currentPlayer forValue:value toOption:option];
+						}else {
+							printf("opción inválida\n");
+						}
+
+
 					}
 				}else if ( [currentWord compare:@"lista"] == 0 ) {
 					NSArray *temp = [players allValues];
@@ -130,9 +137,12 @@
 					[[tables objectForKey:index] spinTheWheel];
 					
 					NSDictionary * payouts = [[tables objectForKey:index] payouts];
+
 					for(NSString *key in payouts){
 						//int person = [key intValue];
+
 						double pay = [[payouts valueForKey:key] doubleValue];
+						printf("Pago de:\t%lf\n", pay);
 						[[players objectForKey:key] collect:pay];
 					}
 				}

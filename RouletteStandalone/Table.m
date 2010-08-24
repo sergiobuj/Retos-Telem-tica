@@ -19,6 +19,7 @@
 	if (self = [super init]) {
 		self.tableID = idTable;
 		bets = [[NSMutableArray alloc] init];
+		payouts = [[NSMutableDictionary alloc] init];
 	}
 	return self;
 }
@@ -38,6 +39,7 @@
 	for( Bet * currentBet in bets){
 		int currentOption = [currentBet option];
 		double payout = 0;
+
 		switch (currentOption) {
 
 			case kRedOption:
@@ -62,7 +64,7 @@
 				
 				
 			case kOddOption:
-				if ( result % 2 != 0 ){
+				if ( result % 2 == 1 ){
 					payout = ( [currentBet value] / 18.0 ) * 36.0;
 				}
 				break;
@@ -74,6 +76,11 @@
 					
 				}// else, invalid number!
 				break;
+		}
+		
+		
+		if ([payouts objectForKey:[NSString stringWithFormat:@"%d",[currentBet gamblerID]]] != nil) {
+			payout += [[payouts objectForKey:[NSString stringWithFormat:@"%d",[currentBet gamblerID]]] doubleValue];
 		}
 		
 		[payouts setObject:[NSNumber numberWithDouble:payout] forKey:[NSString stringWithFormat:@"%d",[currentBet gamblerID]]];
@@ -88,9 +95,11 @@
 - (void) spinTheWheel{
 	if ([bets count] != 0) {
 		[payouts removeAllObjects];
-		int result = SSRandomIntBetween(0, 37);
+		
+		int result = random() % 38;
+//		int result = SSRandomIntBetween(0, 37);
 		[self payBetsToResult:result];
-		printf("Resultado ruleta: %d", result);
+		printf("Resultado ruleta: %d\n", result);
 
 	}		
 	
@@ -102,6 +111,7 @@
 
 -(void) dealloc{
 	[bets release];
+	[payouts release];
 	[super dealloc];
 }
 @end
